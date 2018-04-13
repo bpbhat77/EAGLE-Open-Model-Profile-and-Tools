@@ -5,7 +5,7 @@ We provide two PYANG plugins to provide translation for:
 - YANG to [JSON schema](http://json-schema.org/).
 - YANG to [SWAGGER specification](http://swagger.io/).
 
-[Pyang](https://code.google.com/p/pyang/) is an extensible YANG validator and converter written in python. 
+[Pyang](https://github.com/mbj4668/pyang) is an extensible YANG validator and converter written in python. 
 
 It can be used to validate YANG modules for correctness, to transform YANG modules into other formats, and to generate code from the modules. We have written two pyang plugins: SWAGGER and JSON Schema:
 
@@ -17,8 +17,22 @@ The proposed pyang plugin for Swagger is the result of [STRAUSS project](http://
 
 ##Install pyang
 
-Download pyang [here](https://code.google.com/p/pyang/wiki/Downloads?tm=2) (tested with version 1.5).
+Download pyang [here](https://github.com/mbj4668/pyang/releases) (tested with version 1.5).
 Extract the archive to a folder of you choice.
+
+```
+wget https://github.com/mbj4668/pyang/archive/pyang-1.7.4.tar.gz
+
+tar -xvzf pyang-1.7.4.tar.gz
+
+cd tar -xvzf pyang-1.7.4
+
+wget https://raw.githubusercontent.com/OpenNetworkingFoundation/EAGLE-Open-Model-Profile-and-Tools/ToolChain/YangJsonTools/json_schema.py
+
+wget https://raw.githubusercontent.com/OpenNetworkingFoundation/EAGLE-Open-Model-Profile-and-Tools/ToolChain/YangJsonTools/swagger.py
+
+
+```
 Install pyang  by running the following command inside that folder:
 
 ```
@@ -30,7 +44,11 @@ sudo python setup.py install
 ## Copy the json_schema plugin to pyang's plugin directory:
 
 ```
+Ubuntu
 sudo cp pyang_plugins/json_schema.py /usr/local/lib/python2.7/dist-packages/pyang/plugins/
+
+Cent OS
+sudo cp json_schema.py /usr/lib/python2.7/site-packages/pyang-1.7.4-py2.7.egg/pyang/plugins/
 ```
 
 ## Run pyang json_schema plugin
@@ -53,7 +71,11 @@ pyang -f json_schema --schema_path file:///home/username/basefolder-local-files 
 ## Copy the swagger plugin to pyang's plugin directory:
 
 ```
+Ubuntu
 sudo cp pyang_plugins/swagger.py /usr/local/lib/python2.7/dist-packages/pyang/plugins/
+
+Cent OS
+sudo cp swagger.py /usr/lib/python2.7/site-packages/pyang-1.7.4-py2.7.egg/pyang/plugins/
 ```
 
 ## Run pyang swagger plugin
